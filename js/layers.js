@@ -15,20 +15,44 @@ addLayer("p", {
     exponent: 0.5, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
+        
         return mult
     },
-    gainExp() { // Calculate the exponent on main currency from bonuses
+    gainExp() {
+        
         return new Decimal(1)
     },
     upgrades: {
         11: {
             title: "Addition ",
-            description: "Gain 1 more to your Number every second.",
+            description: "Gain 1 more to your Number per second.",
             cost: new Decimal(1),
             unlocked() { return player[this.layer].unlocked }, // The upgrade is only visible when this is true
-            branches: [12],
-            tooltip: "+1 to number per second",
+            tooltip: "+1 number per second",
         },
+        12: {
+            title: "Better addition ",
+            description: "Number per second scales with unspent addition points.",
+            cost: new Decimal(2),
+            unlocked() { return player[this.layer].unlocked },
+            tooltip: "Number scales with addition points",
+            effect() {
+                return player[this.layer].points.add(1).pow(0.5)
+            },
+            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+        },
+        13: {
+            title: "Different addition ", 
+            description: "Addition points scale with number.",
+            cost: new Decimal(5),
+            unlocked() { return player[this.layer].unlocked },
+            tooltip: "Numbers",
+            effect() {
+                return player.points.add(1).pow(0.15)
+            },
+            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" }, // Add formatting to the effect
+        },
+        
     },
     
     row: 0, // Row the layer is in on the tree (0 is the first row)

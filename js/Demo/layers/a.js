@@ -22,7 +22,7 @@ addLayer("a", {
         },
         12: {
             name: "Impossible!",
-            done() {return false},
+            done() {return true},
             goalTooltip: "Mwahahaha!", // Shows when achievement is not completed
             doneTooltip: "HOW????", // Showed when the achievement is completed
             textStyle: {'color': '#04e050'},

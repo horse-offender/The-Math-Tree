@@ -50,7 +50,7 @@ Reload the page, and an upgrade will appear in the layer's tab! It will just be 
     cost: new Decimal(1),
 ```
 
-Reload the page, and the upgrade will appear, fully formed! But it won't have any effect when you buy it! To impliment a boost, we need to go to the place where it is calculated. In this case, point gain is calculated in getPointGen in mod.js, so let's head over there.
+Reload the page, and the upgrade will appear, fully formed! But it won't have any effect when you buy it! To implement a boost, we need to go to the place where it is calculated. In this case, point gain is calculated in getPointGen in mod.js, so let's head over there.
 
 It's time to explain Decimals. Decimals are a special way of handling numbers over the normal Javascript limit. They are handled in a very different way. To perform any operations, instead of doing x = x + y, you have to do x = x.add(y). x has to be a Decimal, but y can be either a Decimal or Number (regular javascript number). A more detailed description is in [!general-info.md](/documentation/!general-info.md)
 
